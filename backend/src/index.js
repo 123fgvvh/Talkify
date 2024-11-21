@@ -16,7 +16,8 @@ dotenv.config();
 const PORT = process.env.PORT;
 const __dirname = path.resolve();
 
-app.use(express.json());
+app.use(express.json({ limit: "10mb" })); // Increase the limit to 10MB or adjust as needed
+app.use(express.urlencoded({ limit: "10mb", extended: true })); // For URL-encoded payloads
 app.use(cookieParser());
 app.use(
   cors({
